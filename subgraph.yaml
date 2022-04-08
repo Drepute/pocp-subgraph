@@ -1,0 +1,68 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: POCP
+    network: mumbai
+    source:
+      address: "0x83925dBA42c34e8E474Eb82B881505a90f165e97"
+      abi: POCP
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AdminChanged
+        - Approval
+        - ApprovalForAll
+        - ApproverAdded
+        - ApproverRemoved
+        - BeaconUpgraded
+        - CommunityRegistered
+        - Paused
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - SetTokenUri
+        - Transfer
+        - Unpaused
+        - Upgraded
+        - Voucher
+      abis:
+        - name: POCP
+          file: ./abis/POCP.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: ApproverAdded(indexed uint256,indexed address)
+          handler: handleApproverAdded
+        - event: ApproverRemoved(indexed uint256,indexed address)
+          handler: handleApproverRemoved
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: CommunityRegistered(indexed uint256,indexed string,indexed address)
+          handler: handleCommunityRegistered
+        - event: Paused(address)
+          handler: handlePaused
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: SetTokenUri(indexed uint256,indexed string)
+          handler: handleSetTokenUri
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+        - event: Voucher(uint256)
+          handler: handleVoucher
+      file: ./src/mapping.ts
