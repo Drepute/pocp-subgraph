@@ -1,4 +1,5 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
+description: "Subgraph for Proof of Contribution protocol"
 schema:
   file: ./schema.graphql
 dataSources:
