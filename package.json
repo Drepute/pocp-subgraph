@@ -1,10 +1,10 @@
 {
-  "name": "pocp-subgraph",
+  "name": "pocp-demo-beta",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ Drepute/pocp-subgraph",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ eth-jashan/drepute",
     "create-local": "graph create --node http://localhost:8020/ Drepute/pocp-subgraph",
     "remove-local": "graph remove --node http://localhost:8020/ Drepute/pocp-subgraph",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Drepute/pocp-subgraph"
