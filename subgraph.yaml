@@ -21,20 +21,26 @@ dataSources:
         - name: POCP
           file: ./abis/POCP.json
       eventHandlers:
+        - event: CommunityRegistered(uint256,string,address)
+          handler: handleCommunityRegistered
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: ApproverAdded(indexed uint256,indexed address)
+          handler: handleApproverAdded
+        - event: ApprovedBadge(uint256,bytes32,uint256)
+          handler: handleApprovedBadge
+        - event: ClaimedBadge(uint256,uint256)
+          handler: handleClaimedBadge
         # - event: AdminChanged(address,address)
         #   handler: handleAdminChanged
         # - event: Approval(indexed address,indexed address,indexed uint256)
         #   handler: handleApproval
         # - event: ApprovalForAll(indexed address,indexed address,bool)
         #   handler: handleApprovalForAll
-        - event: ApproverAdded(indexed uint256,indexed address)
-          handler: handleApproverAdded
         # - event: ApproverRemoved(indexed uint256,indexed address)
         #   handler: handleApproverRemoved
         # - event: BeaconUpgraded(indexed address)
         #   handler: handleBeaconUpgraded
-        - event: CommunityRegistered(uint256,string,address)
-          handler: handleCommunityRegistered
         # - event: Paused(address)
         #   handler: handlePaused
         # - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
@@ -43,16 +49,10 @@ dataSources:
         #   handler: handleRoleGranted
         # - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
         #   handler: handleRoleRevoked
-        - event: Transfer(indexed address,indexed address,indexed uint256)
-          handler: handleTransfer
         # - event: Unpaused(address)
         #   handler: handleUnpaused
         # - event: Upgraded(indexed address)
         #   handler: handleUpgraded
         # - event: Voucher(uint256)
         #   handler: handleVoucher
-        - event: ApprovedBadge(uint256,bytes32,uint256)
-          handler: handleApprovedBadge
-        - event: ClaimedBadge(uint256,uint256)
-          handler: handleClaimedBadge
       file: ./src/mapping.ts
