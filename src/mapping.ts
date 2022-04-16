@@ -6,7 +6,7 @@ import {
   POCP as POCPContract,
   ClaimedBadge
 } from "../generated/POCP/POCP"
-import { Approver, Community, PocpToken, TransferMeta } from "../generated/schema"
+import { ApprovedToken, Approver, Community, PocpToken, TransferMeta } from "../generated/schema"
 
 // export function handleApproval(event: Approval): void {}
 // export function handleApprovalForAll(event: ApprovalForAll): void {}
@@ -21,7 +21,16 @@ import { Approver, Community, PocpToken, TransferMeta } from "../generated/schem
 // export function handleUpgraded(event: Upgraded): void {}
 // export function handleVoucher(event: Voucher): void {}
 
-export function handleApprovedBadge(event: ApprovedBadge): void {}
+export function handleApprovedBadge(event: ApprovedBadge): void {
+  let approvedToken = ApprovedToken.load(event.params.tokenId.toString())
+  if(!approvedToken){
+    approvedToken = new ApprovedToken(event.params.tokenId.toString())
+    approvedToken.community = event.params.communityId.toString()
+    approvedToken.id = event.params.tokenId.toString()
+    // approvedToken.identifier = event.params.customIdentifier
+    approvedToken.save()
+  }
+}
 
 export function handleApproverAdded(event: ApproverAdded): void {
   let approver = Approver.load(event.params.account)
@@ -45,7 +54,6 @@ export function handleClaimedBadge(event: ClaimedBadge): void {
     pocpToken = new PocpToken(event.params.tokenId.toString())
     pocpToken.community = event.params.communityId.toString()
     pocpToken.ipfsMetaUri = pocpContract.tokenURI(event.params.tokenId)
-
   }
   pocpToken.save()
 }
@@ -56,6 +64,7 @@ export function handleCommunityRegistered(event: CommunityRegistered): void {
     community = new Community(event.params.communityId.toString())
     community.name = event.params.communityName
     community.txSigner = event.params.txSigner
+    community.txhash = event.transaction.hash
   }
   community.save()
 }

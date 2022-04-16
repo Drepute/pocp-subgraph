@@ -7,7 +7,7 @@ dataSources:
     name: POCP
     network: mumbai
     source:
-      address: "0x5f08573c764632184B8a5BA8A183cfb665FC9978"
+      address: "0xf35Af1f3873f241C814a2Bbd18f590d7e8e29862"
       abi: POCP
       startBlock: 25914100
     mapping:
@@ -17,16 +17,19 @@ dataSources:
       entities:
         - Community
         - PocpToken
+        - ApprovedToken
+        - Approver
+        - TransferMeta
       abis:
         - name: POCP
           file: POCP/abis/POCP.json
       eventHandlers:
-        - event: ApproverAdded(indexed uint256,indexed address)
-          handler: handleApproverAdded
         - event: CommunityRegistered(uint256,string,address)
           handler: handleCommunityRegistered
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
+        - event: ApproverAdded(indexed uint256,indexed address)
+          handler: handleApproverAdded
         - event: ApprovedBadge(uint256,bytes32,uint256)
           handler: handleApprovedBadge
         - event: ClaimedBadge(uint256,uint256)

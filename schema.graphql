@@ -6,6 +6,12 @@ type PocpToken @entity {
   community: Community!
 }
 
+type ApprovedToken @entity {
+  id: ID!
+  community: Community!
+  identifier:Int!
+}
+
 type Approver @entity {
   community: [Community!]!
   id : Bytes!
@@ -17,6 +23,7 @@ type Community @entity {
   approver: [Approver!]! @derivedFrom(field: "community")
   txSigner: Bytes!
   tokens: [PocpToken!]! @derivedFrom(field: "community")
+  txhash:Bytes!
 }
 
 type TransferMeta @entity{
@@ -25,3 +32,4 @@ type TransferMeta @entity{
   to: Bytes!
   timestamp: BigInt!
 }
+
