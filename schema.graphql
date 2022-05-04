@@ -9,7 +9,7 @@ type PocpToken @entity {
 type ApprovedToken @entity {
   id: ID!
   community: Community!
-  identifier:Int!
+  identifier:String!
 }
 
 type Approver @entity {

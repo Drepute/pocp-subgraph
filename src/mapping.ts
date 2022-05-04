@@ -1,3 +1,4 @@
+import { bigInt, BigInt, ethereum } from "@graphprotocol/graph-ts";
 import {
   ApproverAdded,
   CommunityRegistered,
@@ -25,9 +26,9 @@ export function handleApprovedBadge(event: ApprovedBadge): void {
   let approvedToken = ApprovedToken.load(event.params.tokenId.toString())
   if(!approvedToken){
     approvedToken = new ApprovedToken(event.params.tokenId.toString())
-    approvedToken.community = event.params.communityId.toString()
+    approvedToken.community =  event.params.communityId.toString()
     approvedToken.id = event.params.tokenId.toString()
-    // approvedToken.identifier = event.params.customIdentifier
+    approvedToken.identifier = event.params.customIdentifier
     approvedToken.save()
   }
 }

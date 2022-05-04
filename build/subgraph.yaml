@@ -7,7 +7,7 @@ dataSources:
     name: POCP
     network: mumbai
     source:
-      address: "0xf35Af1f3873f241C814a2Bbd18f590d7e8e29862"
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
       abi: POCP
       startBlock: 25914100
     mapping:
@@ -30,7 +30,7 @@ dataSources:
           handler: handleTransfer
         - event: ApproverAdded(indexed uint256,indexed address)
           handler: handleApproverAdded
-        - event: ApprovedBadge(uint256,bytes32,uint256)
+        - event: ApprovedBadge(uint256,string,uint256)
           handler: handleApprovedBadge
         - event: ClaimedBadge(uint256,uint256)
           handler: handleClaimedBadge
