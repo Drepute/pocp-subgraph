@@ -1125,9 +1125,9 @@
   {
     "inputs": [
       {
-        "internalType": "uint8",
+        "internalType": "uint256",
         "name": "tokenId",
-        "type": "uint8"
+        "type": "uint256"
       }
     ],
     "name": "userBadge",

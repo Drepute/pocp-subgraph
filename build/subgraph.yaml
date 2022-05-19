@@ -7,7 +7,7 @@ dataSources:
     name: POCP
     network: mumbai
     source:
-      address: "0x74Ce96D2e9Ce8D48FF52Ee62BEB9388738113AF5"
+      address: "0x7cd27c57e1CBb81Ba8f3aF35CFB275CB107C897d"
       abi: POCP
       startBlock: 25914100
     mapping:
