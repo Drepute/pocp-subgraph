@@ -4,7 +4,8 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ eth-jashan/final-drepute",
+    "deploy:mumbai": "graph deploy --node https://api.thegraph.com/deploy/ eth-jashan/final-drepute",
+    "deploy:polygon": "graph deploy --node https://api.thegraph.com/deploy/ eth-jashan/pocp-mainnet",
     "create-local": "graph create --node http://localhost:8020/ Drepute/pocp-subgraph",
     "remove-local": "graph remove --node http://localhost:8020/ Drepute/pocp-subgraph",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Drepute/pocp-subgraph"
